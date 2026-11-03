@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 1: Living in a Digital Age</title>
+<style>
+:root{color-scheme:dark;--bg:#0e1621;--card:#16212e;--ink:#dbe4ee;--mut:#8a9bb0;--acc:#5ad1e6;--amb:#f4b860;--line:#26364a;--ok:#7bd88f;--no:#ff7b72;--mono:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{max-width:880px;margin:auto;padding:30px 20px 0}
+h1,h2,h4{font-family:var(--mono);font-weight:600}
+h1{font-size:1.7rem;margin:0 0 18px}
+h1:before{content:"> ";color:var(--acc)}
+h2{font-size:1.15rem;color:var(--amb);margin:22px 0 4px}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line)}
+.tab{font:.95rem var(--mono);color:var(--mut);background:transparent;border:1px solid transparent;border-bottom:0;padding:9px 16px;border-radius:8px 8px 0 0;cursor:pointer}
+.tab[aria-selected=true]{background:var(--card);color:var(--acc);border-color:var(--line);box-shadow:inset 0 2px 0 var(--acc)}
+main{max-width:880px;margin:auto;padding:0 20px 60px}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:8px;margin:12px 0}
+.stage>summary{padding:13px 16px;cursor:pointer;font-weight:600;display:flex;gap:10px;justify-content:space-between;list-style:none}
+.stage>summary::-webkit-details-marker{display:none}
+.stage>summary:before{content:"▸";color:var(--acc);margin-right:8px}
+.stage[open]>summary:before{content:"▾"}
+.stage>summary span:nth-child(1){flex:1}
+.min{font:.85rem var(--mono);color:var(--mut)}
+.in{padding:0 16px 16px}
+.w{border-top:1px dashed var(--line);padding:12px 0}
+.w h4{margin:0 0 8px;font-size:.95rem;color:var(--acc)}
+.w ul{margin:0;padding-left:20px}
+.w li{margin:3px 0}
+.r{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:5px 0;flex-wrap:wrap}
+.r>span{flex:1 1 280px}
+select,input.g{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 8px;max-width:100%}
+input.g{width:8em}
+.ok{border-color:var(--ok)!important;background:#16301f!important}
+.no{border-color:var(--no)!important;background:#3a1b1d!important}
+button.b{font:.85rem var(--mono);border:1px solid var(--acc);color:var(--acc);background:transparent;padding:5px 12px;border-radius:6px;cursor:pointer;margin:8px 8px 0 0}
+button.b:hover{background:var(--acc);color:var(--bg)}
+button.sm{margin:0;padding:3px 9px}
+a.audio{display:inline-block;background:var(--acc);color:var(--bg);text-decoration:none;font:600 .9rem var(--mono);padding:9px 14px;border-radius:6px;margin:6px 0}
+.ans{display:none;color:var(--ok);font-size:.93rem;margin-top:3px}
+.open .ans{display:block}
+.bank{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
+.bank b{font:.85rem var(--mono);color:var(--amb);border:1px solid var(--amb);border-radius:14px;padding:2px 10px;font-weight:400}
+.ex code{color:var(--amb);font-family:var(--mono)}
+.sc{color:var(--mut);font:.85rem var(--mono)}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:10px}
+.pics figure{margin:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#0a111a}
+.pics figcaption{font:.85rem var(--mono);color:var(--acc);padding:4px 10px}
+.pics svg{display:block;width:100%;height:auto}
+:focus-visible{outline:2px solid var(--amb);outline-offset:2px}
+</style>
+</head>
+<body>
+<header>
+<h1>Unit 1: Living in a Digital Age</h1>
+<p style="margin:-8px 0 14px"><a href="index.html" style="color:var(--acc);font:.9rem var(--mono)">&lt; back to contents</a></p>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" data-l="1" aria-selected="true">lesson_01</button>
+<button class="tab" role="tab" data-l="2" aria-selected="false">lesson_02</button>
+</div>
+</header>
+<main id="app"></main>
+<script>
+const AUDIO="https://www.bbclearningenglish.org/lesson/office-english-formal-or-informal";
+const aud=t=>`<a class="audio" href="${AUDIO}" target="_blank" rel="noopener">Open the BBC audio</a><div class="sc">${t}</div>`;
+const bank=a=>`<div class="bank">${a.map(x=>`<b>${x}</b>`).join("")}</div>`;
+const PICS=`<div class="pics">
+<figure><svg viewBox="0 0 200 150" role="img" aria-label="Picture a: a cash machine"><rect width="200" height="150" fill="#13263a"/><rect x="55" y="15" width="90" height="125" rx="6" fill="#2f4d73"/><rect x="65" y="25" width="70" height="30" rx="3" fill="#7fe0f0"/><rect x="70" y="32" width="40" height="4" fill="#13263a"/><rect x="70" y="40" width="28" height="4" fill="#13263a"/><rect x="65" y="64" width="34" height="34" rx="3" fill="#1d3552"/><g fill="#8fb3d9"><rect x="69" y="68" width="8" height="8"/><rect x="80" y="68" width="8" height="8"/><rect x="69" y="79" width="8" height="8"/><rect x="80" y="79" width="8" height="8"/><rect x="69" y="90" width="8" height="5"/><rect x="80" y="90" width="8" height="5"/></g><rect x="106" y="70" width="28" height="5" fill="#0a111a"/><rect x="106" y="86" width="28" height="10" rx="2" fill="#0a111a"/><rect x="102" y="112" width="36" height="8" fill="#f4b860"/></svg><figcaption>a</figcaption></figure>
+<figure><svg viewBox="0 0 200 150" role="img" aria-label="Picture b: students at computers"><rect width="200" height="150" fill="#1b2a3a"/><g fill="#3a5a80"><rect x="15" y="45" width="50" height="40" rx="3"/><rect x="75" y="45" width="50" height="40" rx="3"/><rect x="135" y="45" width="50" height="40" rx="3"/></g><g fill="#7fe0f0"><rect x="20" y="50" width="40" height="30"/><rect x="80" y="50" width="40" height="30"/><rect x="140" y="50" width="40" height="30"/></g><g fill="#0a111a"><rect x="22" y="56" width="26" height="3"/><rect x="82" y="56" width="30" height="3"/><rect x="142" y="56" width="22" height="3"/><rect x="22" y="64" width="34" height="3"/><rect x="82" y="64" width="24" height="3"/><rect x="142" y="64" width="32" height="3"/></g><g fill="#c9d6e6"><rect x="18" y="92" width="44" height="6" rx="2"/><rect x="78" y="92" width="44" height="6" rx="2"/><rect x="138" y="92" width="44" height="6" rx="2"/></g><g fill="#f4b860"><circle cx="40" cy="120" r="12"/><circle cx="100" cy="120" r="12"/><circle cx="160" cy="120" r="12"/></g></svg><figcaption>b</figcaption></figure>
+<figure><svg viewBox="0 0 200 150" role="img" aria-label="Picture c: air traffic control radar"><rect width="200" height="150" fill="#0f1a1a"/><circle cx="100" cy="68" r="52" fill="#0b2a22" stroke="#4ade80" stroke-width="2"/><circle cx="100" cy="68" r="34" fill="none" stroke="#2f7d55"/><circle cx="100" cy="68" r="16" fill="none" stroke="#2f7d55"/><path d="M100 68 L140 40" stroke="#7bd88f" stroke-width="3"/><g fill="#f4b860"><circle cx="70" cy="50" r="3"/><circle cx="120" cy="88" r="3"/><circle cx="88" cy="96" r="3"/></g><rect x="20" y="126" width="160" height="14" rx="3" fill="#26364a"/><g fill="#5ad1e6"><rect x="30" y="130" width="14" height="6"/><rect x="52" y="130" width="14" height="6"/><rect x="74" y="130" width="14" height="6"/></g></svg><figcaption>c</figcaption></figure>
+<figure><svg viewBox="0 0 200 150" role="img" aria-label="Picture d: a handheld device with a stylus"><rect width="200" height="150" fill="#1b2a3a"/><rect x="62" y="18" width="76" height="118" rx="10" fill="#26364a" stroke="#8fb3d9" stroke-width="2"/><rect x="70" y="30" width="60" height="78" rx="3" fill="#7fe0f0"/><g fill="#0a111a"><rect x="75" y="38" width="30" height="3"/><rect x="75" y="46" width="42" height="3"/><rect x="75" y="54" width="24" height="3"/></g><circle cx="100" cy="122" r="6" fill="#8fb3d9"/><path d="M150 22 L112 70" stroke="#f4b860" stroke-width="4" stroke-linecap="round"/></svg><figcaption>d</figcaption></figure>
+</div>`;
+const L={
+1:{t:"Lesson 1: Digital Age, Greetings and Titles",s:[
+{t:"Warm-up: two minutes, no pause",m:5,w:[{k:"say",title:"Speak for 2 minutes",items:["Describe your digital day yesterday, from waking up to going to bed."]}]},
+{t:"Lead-in: pictures and captions",m:6,w:[
+{k:"raw",html:PICS},
+{k:"sel",title:"Match the captions with the pictures",opts:["a","b","c","d"],items:[["Controlling air traffic",2],["The Internet in your pocket",3],["In education, computers can make all the difference",1],["Using a cashpoint, or ATM",0]]},
+{k:"raw",html:`<div class="ex"><h4>Compare</h4><p><code>is used to + verb</code> (purpose) · <code>is used for + noun or -ing</code></p><ul><li>Git is used <code>to</code> track changes in code.</li><li>Docker is used <code>to</code> run apps in containers.</li><li>A firewall is used <code>to</code> block unauthorised traffic.</li><li>A VPN is used <code>for</code> secure remote access.</li><li>Jira is used <code>for</code> tracking tasks.</li><li>Logs are used <code>for</code> finding bugs.</li></ul></div>`},
+{k:"say",title:"Your turn: speak about the pictures, then your own tools",items:["Computers are used to… (one sentence per picture)","Pick three tools you use every day: X is used to… / X is used for…"]}]},
+{t:"Vocabulary sprint",m:10,w:[{k:"sel",title:"Choose the meaning for each word",opts:["connected to the Internet","screen","execute, do","program used for text manipulation","monetary","collection of facts or figures","keep, save","integrated","copy files from a server to your PC or mobile","recorded or broadcast using computers"],items:[["download (v)",8],["data (n)",5],["perform (v)",2],["online (adj)",0],["word processor (n)",3],["monitor (n)",1],["digital (adj)",9],["store (v)",6],["financial (adj)",4],["built-in (adj)",7]]},{k:"say",title:"Your turn",items:["Use each word in a sentence about your own job. Example: We monitor the servers and store the data in the cloud."]}]},
+{t:"Collocations",m:12,w:[{k:"raw",html:bank(["transfer money","do research","carry out tests","give presentations","access the Internet","keep records","store information","make calls","send texts"])},{k:"gap",title:"Complete with a collocation (verb + noun)",bank:["access the Internet","transfer money","make calls","give presentations","do research","store information","send texts","keep records","carry out tests"],items:[["Thanks to Wi-Fi, it’s now easy to ",["access the Internet"]," from cafés, hotels and parks."],["Online banking lets you ",["transfer money"]," between your accounts."],["Skype lets you ",["make calls"]," over the Internet for free."],["Students are encouraged to ",["give presentations"]," using PowerPoint."],["The Web has changed the way people ",["do research"],"."],["Cookies allow a website to ",["store information"]," on a user’s machine."],["With the latest mobile phones, you can ",["send texts"]," with multimedia attachments."]]},{k:"say",title:"Make it yours",items:["Make six sentences about your real work: keep records, access databases, carry out tests, display data…","Example: I keep records of every bug in Jira, and I access databases to check the logs."]}]},
+{t:"Listening Part 1: greetings, introductions and titles",m:20,w:[
+{k:"say",title:"Warm-up: speak first (3 min)",items:["In Russian you can say ty or Vy. Is there something similar at your workplace?","How do you greet a new client in English? And a colleague you see every day?","Do you use titles (Mr, Dr, Sir) at work?"]},
+{k:"raw",html:aud("Play from the very beginning to Phil’s line “…they’re more likely to use titles, um, when they’re speaking English.” Stop there (about 5 minutes).")},
+{k:"open",title:"First listening: gist",items:[["What is the programme mainly about?","How formal or informal to be at work (greetings, requests, instructions)."],["According to Neil, what matters more than rules of formality?","The context."],["What is the most important thing to do, according to Phil?","Recognise your workplace’s culture and try to fit in with everyone else."]]},
+{k:"sel",title:"Second listening: true or false?",opts:["True","False"],items:[["Formal language is similar to the language you would write in a letter.",0],["Georgie says it is easy to be formal with people you see all the time.",1],["All workplaces have the same level of formality.",1],["Titles such as Mr or Madam are very common in British offices.",1],["In hospitals, doctors are often called “doctor” plus their surname.",0],["You should never use informal language with important people.",1],["Using titles is the same in every country.",1]]},
+{k:"gap",title:"Greetings: complete",items:[["Formal: “Good ",["morning"],".”"],["Formal: “Nice to ",["meet"]," you.”"],["Informal: “Hey, how are you ",["doing"],"?”"],["Informal: “Great to ",["meet"]," you.”"]]},
+{k:"sel",title:"Put the greetings in order: 1 = most formal, 5 = least formal",opts:["1","2","3","4","5"],items:[["Hey, how’s it going?",4],["Good morning, it’s a pleasure to meet you.",0],["Nice to meet you.",2],["Hi, great to meet you.",3],["Good morning. Nice to meet you.",1]]},
+{k:"say",title:"Role-plays (1 minute each)",items:["You meet the CTO (Chief Technology Officer) of a new client for the first time on a video call.","You meet a new teammate on their first day.","You meet the same CTO two days later at a company social.","A senior manager uses your first name. What do you call them?","Interview question: How do you adapt your English when you talk to clients and to colleagues? Give two examples. Use: it depends on…, with clients I usually…, with my team I tend to…"]}]},
+{t:"Wrap-up and homework",m:5,w:[{k:"say",title:"Homework",items:["Record a 1-minute voice message: Three things I do every day on my computer at work. Use four collocations."]},{k:"raw",html:'<h4>Written homework</h4><p style="margin:0 0 8px">20 gap-fills on today’s grammar and vocabulary. Your result goes to Julia by email.</p><a class="audio" href="homework-unit1-lesson1.html">Open Homework 1</a>'}]}]},
+2:{t:"Lesson 2: Computers at Work, Requests and Instructions",s:[
+{t:"Warm-up: spot the mistake",m:5,w:[{k:"sel",title:"Correct or mistake?",opts:["Correct","Mistake"],items:[["Yesterday I have downloaded the file.",1],["She doesn’t work online.",0],["He don’t store any data.",1],["We’ve just finished the project.",0],["I didn’t went to the meeting.",1],["She has a lot of informations about the system.",1],["They have worked here since 2019.",0],["If I will have time, I’ll check the logs.",1]]}]},
+{t:"Computers at work",m:8,w:[{k:"say",title:"Predict and speak",items:["Electrical engineer, secretary, librarian, composer: how would each use a computer?","Use: A composer probably uses a computer to… / I imagine a librarian needs it for… / must / might / could.","Now do the same for a developer, DevOps engineer, QA tester and sysadmin."]}]},
+{t:"Experience in the interview",m:7,w:[{k:"raw",html:"<p><b>Rule:</b> experience = present perfect. When, where, how = past simple.</p>"},{k:"sel",title:"Which tense?",opts:["Present perfect","Past simple"],items:[["I’ve worked with Docker for three years.",0],["I set it up at my last job.",1],["Have you ever managed a team?",0],["When did you start?",1],["We’ve migrated two projects to the cloud.",0],["We migrated the database last March.",1]]},{k:"say",title:"Speak",items:["Five true sentences in two parts: I’ve worked with Docker for three years. I set it up at my last job."]}]},
+{t:"Other applications",m:12,w:[{k:"say",title:"Round 1: be the expert (90 seconds)",items:["Choose: Formula 1 cars, entertainment, factories and industrial processes, schools and universities.","Use: Computers are used to… / A PC can also be used for… / People use computers to…"]},{k:"say",title:"Round 2: the risks",items:["What can go wrong if this area relies on computers?","Use: On the one hand… on the other hand… / The main risk is… / In my opinion…"]}]},
+{t:"Listening Part 2: requests and instructions",m:18,w:[
+{k:"say",title:"Warm-up: speak first (3 min)",items:["When did you last ask a colleague for help? What exactly did you say?","Do you prefer to give instructions in writing (email, Slack, documentation) or in person?","Which is more polite: Give me the file / Could you send me the file? / Would it be possible to send me the file?"]},
+{k:"raw",html:aud("Play from Pippa’s line “OK. Let’s think about another scenario…” to the end of the programme (about 5 minutes).")},
+{k:"open",title:"First listening: gist",items:[["What two things are discussed?","Requests and instructions."],["What should you do if you’re not sure how formal to be?","Look at how other people do it and do something similar."]]},
+{k:"sel",title:"Formal or informal request?",opts:["Formal","Informal"],items:[["Could I request…",0],["Do you have a minute?",1],["Would it be possible…?",0],["Could I borrow you?",1],["Do you have spare capacity?",0],["Are you free to chat?",1],["Is there a chance that you could help me?",1]]},
+{k:"gap",title:"Instructions: complete",bank:["tend","mindful","come","best","Attendance","do","remember"],items:[["“We would ask that you ",["come"]," into the office on Tuesdays.”"],["“",["Attendance"]," at the office on Tuesdays is mandatory.”"],["“Please be ",["mindful"]," that…”"],["“What you want to ",["do"]," is…”"],["“I ",["tend"]," to…”"],["“I’ve found it’s ",["best"]," to…”"]]},
+{k:"open",title:"Second listening: comprehension",items:[["Why would “spare capacity” sound strange at a dinner party?","It is a formal business expression we wouldn’t use with friends and family."],["What two kinds of formal instructions are mentioned?","Very polite, formal structures (less clear) and direct instructions like road signs, with imperatives."],["Which type suits spoken training, and which suits an email or written guide?","Informal for spoken training; formal for an email or written guide."]]},
+{k:"open",title:"Error hunt: correct each sentence",items:[["Could you to send me the file?","Could you send me the file?"],["Do you can help me with this ticket?","Can you help me with this ticket?"],["I want that you review my pull request.","I want you to review my pull request."],["Please explain me how this works.","Please explain to me how this works."],["I have a question to you.","I have a question for you."],["I am needing it urgently.","I need it urgently."]]},
+{k:"raw",html:"<p><b>Polite structures:</b> Could I + base verb · Would it be possible to + base verb · Do you mind if I + present simple · I was wondering if you could + base verb · We would ask that you + base verb</p>"},
+{k:"say",title:"Role-plays",items:["Ask for help twice: formally (email to a senior manager), then informally (Slack to a teammate).","Train a new colleague to set up VPN access or deploy code, informally. Then give one instruction formally for the handbook.","A client wants an urgent change on Friday evening and you can’t do it. Reply formally, then tell your teammate what happened, informally."]}]},
+{t:"Interview rapid-fire",m:7,w:[{k:"say",title:"20 seconds per answer, no preparation",items:["What tools do you use every day?","Tell me about a time you solved a technical problem.","How do you explain technical things to non-technical clients?","How do you think technology will change your job?"]}]},
+{t:"Wrap-up and homework",m:3,w:[{k:"say",title:"Homework",items:["Prepare “Tell me about yourself” in 6–8 sentences: at least five collocations from Unit 1 and one present perfect sentence. Record it and send the audio."]}]}]}
+};
+const app=document.getElementById("app");
+const sh=(i,j)=>`<div class="r"><span>${i[0]}</span>`;
+function wid(w){
+ if(w.k==="raw")return `<div class="w">${w.html}</div>`;
+ let h=`<div class="w"><h4>${w.title}</h4>`;
+ const btn=`<button class="b" data-do="chk">Run check</button><button class="b" data-do="key">Reveal answers</button> <span class="sc"></span>`;
+ if(w.k==="say")h+="<ul>"+w.items.map(i=>`<li>${i}</li>`).join("")+"</ul>";
+ if(w.k==="sel")h+=w.items.map(i=>`<div class="r"><span>${i[0]}</span><select data-a="${i[1]}"><option value="">?</option>${w.opts.map((o,j)=>`<option value="${j}">${o}</option>`).join("")}</select></div>`).join("")+btn;
+ if(w.k==="gap")h+=w.items.map(i=>`<div class="r"><span>${i[0]}${w.bank?`<select class="g" data-a="${i[1].join("|")}"><option value="">?</option>${w.bank.map(o=>`<option value="${o}">${o}</option>`).join("")}</select>`:`<input class="g" data-a="${i[1].join("|")}" aria-label="gap" autocomplete="off">`} ${i[2]}</span></div>`).join("")+btn;
+ if(w.k==="open")h+=w.items.map(i=>`<div class="r"><span>${i[0]}<div class="ans">${i[1]}</div></span><button class="b sm" data-do="rev">Show answer</button></div>`).join("");
+ return h+"</div>";
+}
+function render(n){
+ const d=L[n];
+ app.innerHTML=`<h2>// ${d.t}</h2>`+d.s.map((s,i)=>`<details class="stage" ${i===0?"open":""}><summary><span>${s.t}</span><span class="min">${s.m} min</span></summary><div class="in">${s.w.map(wid).join("")}</div></details>`).join("");
+}
+const norm=s=>s.toLowerCase().replace(/[’']/g,"'").replace(/\s+/g," ").trim();
+app.addEventListener("click",e=>{
+ const b=e.target.closest("button[data-do]");if(!b)return;
+ const a=b.dataset.do;
+ if(a==="rev"){b.closest(".r").classList.toggle("open");return}
+ const w=b.closest(".w"),f=[...w.querySelectorAll("select,input.g")];
+ let ok=0;
+ f.forEach(x=>{
+  const ans=x.dataset.a.split("|");
+  if(a==="key")x.value=ans[0];
+  const right=ans.map(norm).includes(norm(x.value));
+  if(a==="key"||x.value!==""){x.classList.toggle("ok",right);x.classList.toggle("no",!right)}
+  if(right)ok++;
+ });
+ w.querySelector(".sc").textContent=ok+" / "+f.length;
+});
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
+ document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x===t));
+ render(t.dataset.l);window.scrollTo(0,0);
+}));
+const h0=location.hash==="#2"?"2":"1";
+document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x.dataset.l===h0));
+render(h0);
+</script>
+</body>
+</html>
