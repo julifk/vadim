@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 2: Unit 1, Lesson 1</title>
+<style>
+:root{color-scheme:dark;--bg:#0e1621;--card:#16212e;--ink:#dbe4ee;--mut:#8a9bb0;--acc:#5ad1e6;--amb:#f4b860;--line:#26364a;--ok:#7bd88f;--no:#ff7b72;--mono:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:880px;margin:auto;padding:30px 20px 60px}
+h1,h2,h4{font-family:var(--mono);font-weight:600}
+h1{font-size:1.6rem;margin:0 0 6px}
+h1:before{content:"> ";color:var(--acc)}
+h2{font-size:1.1rem;color:var(--amb);margin:26px 0 6px}
+.sub{color:var(--mut);margin:0 0 10px}
+a.back{color:var(--acc);font:.9rem var(--mono)}
+.w{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 16px 16px;margin:10px 0;box-shadow:inset 0 2px 0 var(--acc)}
+.w h4{margin:0 0 4px;font-size:.95rem;color:var(--acc)}
+.tip{color:var(--mut);font-size:.9rem;margin:0 0 8px}
+.r{padding:7px 0;border-top:1px dashed var(--line)}
+.n{font:.85rem var(--mono);color:var(--amb);margin-right:8px}
+input.g{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:11em;max-width:100%}
+.hint{font:.85rem var(--mono);color:var(--mut)}
+.ok{border-color:var(--ok)!important;background:#16301f!important}
+.no{border-color:var(--no)!important;background:#3a1b1d!important}
+button.b{font:.85rem var(--mono);border:1px solid var(--acc);color:var(--acc);background:transparent;padding:5px 12px;border-radius:6px;cursor:pointer;margin:10px 8px 0 0}
+button.b:hover{background:var(--acc);color:var(--bg)}
+.sc{color:var(--mut);font:.85rem var(--mono)}
+:focus-visible{outline:2px solid var(--amb);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+<p style="margin:0 0 14px"><a class="back" href="index.html">&lt; back to contents</a></p>
+<h1>Homework 2: Unit 1, Lesson 1</h1>
+<p class="sub">30 gap-fills based on the mistakes from our lesson on 6 November. Type one word in each gap (one gap needs three words). Short forms like don't are fine.</p>
+<div id="app"></div>
+<h2>// Send to Julia</h2>
+<div class="w" id="send">
+<p class="tip">Fill in the gaps above, then press Send. Julia gets your score, errors, time spent and a summary of your mistakes by email, and writes feedback. Note: Julia is also told when you open this page.</p>
+<label class="hint" for="who">Your name</label><br>
+<input class="g" id="who" value="Vadim" style="width:14em" autocomplete="off">
+<div><button class="b" id="go">Send to Julia</button><span class="sc" id="st"></span></div>
+<pre id="rep" style="display:none;white-space:pre-wrap;margin:12px 0 0;font:.85rem/1.5 var(--mono);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px"></pre>
+<div id="fb" style="display:none">
+<p class="tip" style="margin-top:12px">If sending did not work, use one of these. The text below has all your answers.</p>
+<textarea id="txt" readonly rows="10" style="width:100%;font:.85rem var(--mono);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px"></textarea>
+<div><button class="b" id="cp">Copy text</button><a class="b" id="wa" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">WhatsApp</a><a class="b" id="ml" style="text-decoration:none;display:inline-block">Email (uulia@hotmail.com)</a></div>
+</div>
+</div>
+</main>
+<script>
+const S=[
+{t:"A. He / she / it: add -s or -es",tip:"He, she, it, and one person, thing or team (our team = it) take -s. After s, sh, ch, x, o add -es (goes, fixes). Consonant + y becomes -ies (studies). Have becomes has.",
+ i:[
+ ["My girlfriend "," to work at seven o'clock.",["goes"],"(go)"],
+ ["My colleague "," electrical problems.",["fixes"],"(fix)"],
+ ["The factory "," at six o'clock.",["closes"],"(close)"],
+ ["Our team "," a meeting on Mondays.",["has"],"(have)"],
+ ["My colleague "," English after work.",["studies"],"(study)"]]},
+{t:"B. I / you / we / they: no -s",tip:"With I, you, we, they the verb stays the same: I measure, we test. A habit is present simple: I wake up, I work. Not I'm wake up, not I'm working.",
+ i:[
+ ["I "," the temperature every hour.",["measure"],"(measure)"],
+ ["We "," every new engine before the release.",["test"],"(test)"],
+ ["I "," up at seven o'clock every day.",["wake"],"(wake)"],
+ ["I "," at a factory. I go there every day.",["work"],"(work)"]]},
+{t:"C. Negatives: don't / doesn't",tip:"I, you, we, they: don't + verb. He, she, it: doesn't + verb. After doesn't the verb has no -s: he doesn't work, not he doesn't works.",
+ i:[
+ ["The engineer "," work on Sundays.",["doesn't","does not"],"(negative)"],
+ ["We "," use paper drawings.",["don't","do not"],"(negative)"],
+ ["The generator "," make noise.",["doesn't","does not"],"(negative)"],
+ ["They "," check the bridge every week.",["don't","do not"],"(negative)"]]},
+{t:"D. Questions: do / does and word order",tip:"Question word + do/does + subject + verb. Does takes the -s, so the main verb has none. Word order is fixed in English: What time does the shift start? Not What time does start the shift?",
+ i:[
+ [""," the machine stop at night?",["does"],"(question)"],
+ [""," your boss read the reports?",["does"],"(question)"],
+ ["Where "," you test the engine?",["do"],"(question)"],
+ ["How often "," he check the oil?",["does"],"(question)"],
+ ["What time "," start?",["does the meeting"],"(does / the meeting, three words)"]]},
+{t:"E. Work English: small words and expressions",tip:"From the lesson: at work and at home (not at my work), in both languages, as an engineer, formal language, a casual tone, give a presentation, workplace.",
+ i:[
+ ["I write code "," work, and I check the logs every morning.",["at"],""],
+ ["I speak Latvian and Russian. I use informal language "," both languages.",["in"],""],
+ ["I work "," an engineer at a factory.",["as"],""],
+ ["With clients I use formal "," because I want to sound professional.",["language","register"],""],
+ ["With my team I use a casual ",", so I say hi, not good morning.",["tone"],""],
+ ["At work I give "," presentation about completed tasks.",["a"],""],
+ ["In my "," everybody uses first names and nobody says sir.",["workplace"],"(the place where you work)"]]},
+{t:"F. is used to + verb / is used for + noun or -ing",tip:"Purpose with a verb: is used to + verb. With a noun or -ing: is used for. This is also present simple: it describes a fact.",
+ i:[
+ ["A thermometer is used "," measure temperature.",["to"],""],
+ ["A pump is used "," moving water.",["for"],""],
+ ["A generator is used "," electricity.",["for"],""],
+ ["Git is used "," track changes in code.",["to"],""],
+ ["A password is used "," logging in.",["for"],""]]}
+];
+let n=0;
+document.getElementById("app").innerHTML=S.map(s=>`<h2>// ${s.t}</h2><div class="w"><p class="tip">${s.tip}</p>`+s.i.map(i=>{n++;return `<div class="r"><span class="n">${n}</span>${i[0]}<input class="g" data-a="${i[2].join("|")}" aria-label="gap ${n}" autocomplete="off"> ${i[1]} <span class="hint">${i[3]}</span></div>`}).join("")+`<button class="b" data-do="chk">Run check</button><button class="b" data-do="key">Reveal answers</button> <span class="sc"></span></div>`).join("");
+const norm=s=>s.toLowerCase().replace(/[’']/g,"'").replace(/\s+/g," ").trim();
+const TO="uulia@hotmail.com",EP="https://formsubmit.co/ajax/"+TO;
+const $=id=>document.getElementById(id);
+function post(o){return fetch(EP,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(o)}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{if(j.success===false||j.success==="false")throw 0})}
+let revealed=0,last=Date.now(),active=0;const t0=Date.now();
+["input","click","keydown","change"].forEach(ev=>document.addEventListener(ev,()=>{last=Date.now()}));
+setInterval(()=>{if(!document.hidden&&Date.now()-last<60000)active++},1000);
+const mmss=s=>Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+function sentence(r,v){let s="";r.childNodes.forEach(c=>{if(c.nodeType===1&&c.matches("input.g"))s+=v;else if(!(c.nodeType===1&&c.matches(".n,.hint")))s+=c.textContent});return s.replace(/\s+/g," ").trim()}
+function collect(){
+ const name=$("who").value.trim()||"Vadim";
+ let ok=0,wrong=0,blank=0,rev=0,fixed=0,tot=0;const topics=[],mist=[],fix=[];
+ document.querySelectorAll("#app h2").forEach(h=>{
+  const t=h.textContent.replace(/^\/\/\s*/,"").trim();let tk=0,tt=0;
+  h.nextElementSibling.querySelectorAll(".r").forEach(r=>{
+   const c=r.querySelector("input.g"),ans=c.dataset.a.split("|"),v=c.value.trim(),num=r.querySelector(".n").textContent;
+   const right=ans.map(norm).includes(norm(v));tot++;tt++;
+   if(c.dataset.rev){rev++;mist.push("#"+num+" "+sentence(r,"___")+"\n   revealed the answer without trying: "+ans[0])}
+   else if(!v){blank++;mist.push("#"+num+" "+sentence(r,"___")+"\n   left blank. Correct: "+ans[0])}
+   else if(right){ok++;tk++;if(c.dataset.fw){fixed++;fix.push("#"+num+" first wrote \""+c.dataset.fw+"\", then corrected to \""+v+"\"")}}
+   else{wrong++;mist.push("#"+num+" "+sentence(r,"___")+"\n   wrote: "+v+" | correct: "+ans[0])}
+  });
+  topics.push([t,tk,tt]);
+ });
+ const pct=Math.round(100*ok/tot),time=mmss(active),weak=topics.filter(x=>x[1]<x[2]).sort((a,b)=>a[1]/a[2]-b[1]/b[2]);
+ const text=["HOMEWORK 2 REPORT: Unit 1, Lesson 1","Student: "+name,"Sent: "+new Date().toLocaleString("en-GB"),"",
+ "SCORE: "+ok+"/"+tot+" ("+pct+"%)",
+ "Correct: "+ok+" | Errors: "+wrong+" | Left blank: "+blank+" | Answer revealed: "+rev,
+ "Corrected after Run check: "+fixed,
+ "Time spent (active): "+time+" | Page open: "+mmss(Math.round((Date.now()-t0)/1000)),
+ "Reveal answers pressed: "+revealed+" time(s)","",
+ "BY TOPIC",...topics.map(x=>x[0]+": "+x[1]+"/"+x[2]),"",
+ "MISTAKES TO REVIEW ("+mist.length+")",...(mist.length?mist:["None. Well done!"]),"",
+ ...(fix.length?["SELF-CORRECTED",...fix,""]:[]),
+ "SUMMARY: "+(weak.length?"needs most work on "+weak.slice(0,3).map(x=>x[0]+" ("+x[1]+"/"+x[2]+")").join("; ")+".":"all topics correct.")].join("\n");
+ return {name,ok,wrong,blank,rev,tot,pct,fixed,time,text};
+}
+try{if(!sessionStorage.getItem("hw-ping-u1l1h2")){sessionStorage.setItem("hw-ping-u1l1h2","1");
+ post({_subject:"Vadim opened the homework page",message:"Opened: Unit 1, Lesson 1 homework 2",_captcha:"false"}).catch(()=>{});}}catch(e){}
+$("go").addEventListener("click",()=>{
+ const d=collect();$("st").textContent=" Sending…";$("rep").style.display="block";$("rep").textContent=d.text;
+ post({_subject:"Homework 2, Unit 1, Lesson 1 – "+d.name+" ("+d.ok+"/"+d.tot+", "+d.time+")",name:d.name,score:d.ok+"/"+d.tot,correct:d.ok,errors:d.wrong,blank:d.blank,revealed:d.rev,time_spent:d.time,message:d.text,_captcha:"false"})
+ .then(()=>{$("st").textContent=" Sent! Julia will send feedback."})
+ .catch(()=>{$("st").textContent=" Could not send. Use the options below.";
+  $("fb").style.display="block";$("txt").value=d.text;
+  $("wa").href="https://wa.me/?text="+encodeURIComponent(d.text);
+  $("ml").href="mailto:"+TO+"?subject="+encodeURIComponent("Homework 2, Unit 1, Lesson 1 – "+d.name)+"&body="+encodeURIComponent(d.text)});
+});
+$("cp").addEventListener("click",()=>{const t=$("txt");t.select();try{navigator.clipboard.writeText(t.value)}catch(e){document.execCommand("copy")}$("cp").textContent="Copied!"});
+document.getElementById("app").addEventListener("input",e=>{if(e.target.dataset)delete e.target.dataset.rev});
+document.getElementById("app").addEventListener("click",e=>{
+ const b=e.target.closest("button[data-do]");if(!b)return;
+ const a=b.dataset.do,w=b.closest(".w"),f=[...w.querySelectorAll("input.g")];let ok=0;
+ if(a==="key")revealed++;
+ f.forEach(x=>{const ans=x.dataset.a.split("|").map(norm);
+  if(a==="key"){if(!ans.includes(norm(x.value)))x.dataset.rev="1";x.value=x.dataset.a.split("|")[0]}
+  const right=ans.includes(norm(x.value));
+  if(a==="chk"&&x.value.trim()!==""&&!right&&!x.dataset.fw)x.dataset.fw=x.value.trim();
+  if(a==="key"||x.value!==""){x.classList.toggle("ok",right);x.classList.toggle("no",!right)}
+  if(right)ok++});
+ w.querySelector(".sc").textContent=ok+" / "+f.length;
+});
+</script>
+</body>
+</html>

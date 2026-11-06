@@ -24,7 +24,8 @@ a.card:hover{border-color:var(--acc)}
 .card small{font:.8rem var(--mono);color:var(--mut)}
 .lw{display:flex;flex-direction:column}
 .lw .card{flex:1;border-bottom-left-radius:0;border-bottom-right-radius:0}
-.hw{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-top:1px dashed var(--line);border-radius:0 0 8px 8px;padding:9px 16px;color:inherit;text-decoration:none;font:.85rem var(--mono)}
+.hw{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-top:1px dashed var(--line);border-radius:0;padding:9px 16px;color:inherit;text-decoration:none;font:.85rem var(--mono)}
+.hw:last-child{border-radius:0 0 8px 8px}
 .hw b{color:var(--amb)}
 .hw span{color:var(--mut)}
 .hw:hover{border-color:var(--amb)}
@@ -41,10 +42,10 @@ a.card:hover{border-color:var(--acc)}
 <div id="units"></div>
 </main>
 <script>
-/* Add a new unit here (optional hw:{t,d,href} adds a homework link under a lesson): copy a block, change the title and the lessons. Use href:null for lessons not uploaded yet. */
+/* Add a new unit here (optional hw:{t,d,href} or an array of them adds homework links under a lesson): copy a block, change the title and the lessons. Use href:null for lessons not uploaded yet. */
 const UNITS=[
 {t:"Unit 1: Living in a Digital Age",l:[
-{t:"Lesson 1",d:"The digital age, vocabulary and collocations, greetings and titles at work.",m:"60 min · speaking + listening",href:"formal-informal-lessons.html#1",hw:{t:"Homework 1",d:"20 gap-fills · result sent to Julia",href:"homework-unit1-lesson1.html"}},
+{t:"Lesson 1",d:"The digital age, vocabulary and collocations, greetings and titles at work.",m:"60 min · speaking + listening",href:"formal-informal-lessons.html#1",hw:[{t:"Homework 1",d:"20 gap-fills · result sent to Julia",href:"homework-unit1-lesson1.html"},{t:"Homework 2",d:"30 gap-fills · result sent to Julia",href:"homework-unit1-lesson2.html"}]},
 {t:"Lesson 2",d:"Computers at work, experience in interviews, requests and instructions.",m:"60 min · speaking + listening",href:"formal-informal-lessons.html#2"}]},
 {t:"Unit 2",l:[{t:"Lesson 3",d:"Coming soon",m:"",href:null},{t:"Lesson 4",d:"Coming soon",m:"",href:null}]},
 {t:"Unit 3",l:[{t:"Lesson 5",d:"Coming soon",m:"",href:null},{t:"Lesson 6",d:"Coming soon",m:"",href:null}]}
@@ -52,7 +53,7 @@ const UNITS=[
 document.getElementById("units").innerHTML=UNITS.map(u=>`<h2>// ${u.t}</h2><div class="grid">${u.l.map(x=>{
  const i=`<h3>${x.t}</h3><p>${x.d}</p><small>${x.m||"not uploaded yet"}</small>`;
  if(!x.href)return `<div class="card soon">${i}</div>`;
- const hw=x.hw?`<a class="hw" href="${x.hw.href}"><b>${x.hw.t}</b><span>${x.hw.d}</span></a>`:"";
+ const hw=[].concat(x.hw||[]).map(w=>`<a class="hw" href="${w.href}"><b>${w.t}</b><span>${w.d}</span></a>`).join("");
  return `<div class="lw"><a class="card" href="${x.href}">${i}</a>${hw}</div>`}).join("")}</div>`).join("");
 </script>
 </body>
