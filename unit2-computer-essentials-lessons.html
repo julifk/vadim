@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 2: Computer essentials</title>
+<style>
+:root{color-scheme:dark;--bg:#0e1621;--card:#16212e;--ink:#dbe4ee;--mut:#8a9bb0;--acc:#5ad1e6;--amb:#f4b860;--line:#26364a;--ok:#7bd88f;--no:#ff7b72;--mono:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{max-width:880px;margin:auto;padding:30px 20px 0}
+h1,h2,h4{font-family:var(--mono);font-weight:600}
+h1{font-size:1.7rem;margin:0 0 18px}
+h1:before{content:"> ";color:var(--acc)}
+h2{font-size:1.15rem;color:var(--amb);margin:22px 0 4px}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tab{font:.95rem var(--mono);color:var(--mut);background:transparent;border:1px solid transparent;border-bottom:0;padding:9px 16px;border-radius:8px 8px 0 0;cursor:pointer}
+.tab[aria-selected=true]{background:var(--card);color:var(--acc);border-color:var(--line);box-shadow:inset 0 2px 0 var(--acc)}
+main{max-width:880px;margin:auto;padding:0 20px 60px}
+.aim{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--amb);border-radius:8px;padding:10px 16px;margin:12px 0}
+.aim b{font-family:var(--mono);color:var(--amb)}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:8px;margin:12px 0}
+.stage>summary{padding:13px 16px;cursor:pointer;font-weight:600;display:flex;gap:10px;justify-content:space-between;list-style:none;flex-wrap:wrap}
+.stage>summary::-webkit-details-marker{display:none}
+.stage>summary:before{content:"▸";color:var(--acc);margin-right:8px}
+.stage[open]>summary:before{content:"▾"}
+.stage>summary span:nth-child(1){flex:1 1 260px}
+.min{font:.85rem var(--mono);color:var(--mut)}
+.sk{font:.8rem var(--mono);color:var(--bg);background:var(--acc);border-radius:10px;padding:0 9px;margin-right:6px}
+.in{padding:0 16px 16px}
+.w{border-top:1px dashed var(--line);padding:12px 0}
+.w h4{margin:0 0 6px;font-size:.95rem;color:var(--acc)}
+.w ul{margin:0;padding-left:20px}
+.w li{margin:3px 0}
+.r{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:6px 0;flex-wrap:wrap}
+.r>span{flex:1 1 280px}
+input.g{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 8px;max-width:100%;width:10em}
+.ch{display:inline-flex;flex-wrap:wrap;gap:6px;padding:3px;border:1px solid transparent;border-radius:8px}
+.cb{font:.85rem var(--mono);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;cursor:pointer}
+.cb:hover{border-color:var(--acc)}
+.cb.on{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+.ok{border-color:var(--ok)!important;background:#16301f!important}
+.no{border-color:var(--no)!important;background:#3a1b1d!important}
+button.b{font:.85rem var(--mono);border:1px solid var(--acc);color:var(--acc);background:transparent;padding:5px 12px;border-radius:6px;cursor:pointer;margin:8px 8px 0 0}
+button.b:hover{background:var(--acc);color:var(--bg)}
+button.sm{margin:0 6px 0 0;padding:2px 8px}
+.ans{display:none;color:var(--ok);font-size:.93rem;margin-top:3px}
+.open .ans{display:block}
+.bank{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
+.bank b{font:.85rem var(--mono);color:var(--amb);border:1px solid var(--amb);border-radius:14px;padding:2px 10px;font-weight:400;cursor:pointer}
+.bank b:hover{background:var(--amb);color:var(--bg)}
+.ex code{color:var(--amb);font-family:var(--mono)}
+.vt{padding:4px 0}
+.vt b{color:var(--amb)}
+.sc,.note{color:var(--mut);font:.85rem var(--mono)}
+.note{margin:0 0 8px}
+.txt{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:10px}
+.pics figure{margin:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#0a111a}
+.pics figcaption{font:.85rem var(--mono);color:var(--acc);padding:4px 10px}
+svg.d{display:block;width:100%;height:auto;background:#0a111a;border:1px solid var(--line);border-radius:8px}
+.pics svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--mono)}
+:focus-visible{outline:2px solid var(--amb);outline-offset:2px}
+</style>
+</head>
+<body>
+<header>
+<h1>Unit 2: Computer essentials</h1>
+<p style="margin:-8px 0 14px"><a href="index.html" style="color:var(--acc);font:.9rem var(--mono)">&lt; back to contents</a></p>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" data-l="1">lesson_01</button>
+<button class="tab" role="tab" data-l="2">lesson_02</button>
+<button class="tab" role="tab" data-l="3">lesson_03</button>
+<button class="tab" role="tab" data-l="4">lesson_04</button>
+</div>
+</header>
+<main id="app"></main>
+<script>
+/* ---------- pronunciation (British English voice of the browser) ---------- */
+const SP={CPU:"C P U",SSD:"S S D",GPU:"G P U",PDA:"P D A",USB:"U S B","USB port":"U S B port","USB ports":"U S B ports","USB-C":"U S B C",RAM:"ram","DVD drive":"D V D drive",PC:"P C","desktop PC":"desktop P C","tablet PC":"tablet P C"};
+let voices=[];
+if("speechSynthesis" in window){const lv=()=>{voices=speechSynthesis.getVoices()};lv();speechSynthesis.onvoiceschanged=lv}
+function spk(t){if(!("speechSynthesis" in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(SP[t]||t);u.lang="en-GB";const v=voices.find(x=>/^en[-_]GB$/i.test(x.lang));if(v)u.voice=v;u.rate=.85;speechSynthesis.speak(u)}
+const spb=t=>`<button type="button" class="b sm" data-s="${t}" aria-label="Listen: ${t}">🔊</button>`;
+const bank=a=>`<div class="bank">${a.map(x=>`<b data-s="${x}" role="button" tabindex="0" title="Click to hear it">🔊 ${x}</b>`).join("")}</div>`;
+const terms=a=>`<div class="ex">${a.map(t=>`<div class="vt">${spb(t[0])}<b>${t[1]||t[0]}</b>: ${t[2]} <i>Example: ${t[3]}</i></div>`).join("")}</div>`;
+/* ---------- pictures ---------- */
+const M=(n,x,y)=>`<circle cx="${x}" cy="${y}" r="11" fill="#f4b860"/><text x="${x}" y="${y+4}" text-anchor="middle" font-size="12" font-weight="700" fill="#0e1621">${n}</text>`;
+const SYS=`<svg class="d" viewBox="0 0 540 300" role="img" aria-label="A computer system. Parts are numbered 1 to 10." style="max-width:620px">
+<rect x="20" y="70" width="110" height="55" rx="5" fill="#2f4d73"/><rect x="40" y="48" width="70" height="25" fill="#c9d6e6"/><rect x="45" y="110" width="60" height="22" fill="#c9d6e6"/>${M(8,75,98)}
+<circle cx="70" cy="215" r="30" fill="#8fb3d9"/><circle cx="70" cy="215" r="8" fill="#0a111a"/><circle cx="100" cy="232" r="20" fill="#5ad1e6" opacity=".7"/>${M(7,45,195)}
+<rect x="190" y="50" width="180" height="120" rx="6" fill="#26364a" stroke="#8fb3d9" stroke-width="2"/><rect x="200" y="60" width="160" height="100" fill="#7fe0f0"/><rect x="265" y="170" width="30" height="20" fill="#26364a"/><rect x="240" y="188" width="80" height="8" fill="#26364a"/>${M(9,280,110)}
+<circle cx="280" cy="38" r="8" fill="#0a111a" stroke="#8fb3d9" stroke-width="2"/>${M(10,310,28)}
+<rect x="190" y="215" width="190" height="30" rx="4" fill="#c9d6e6"/>${M(5,285,230)}
+<ellipse cx="415" cy="235" rx="13" ry="18" fill="#c9d6e6"/>${M(6,415,235)}
+<rect x="410" y="40" width="100" height="150" rx="6" fill="#2f4d73"/><rect x="425" y="60" width="60" height="8" fill="#0a111a"/>${M(2,470,64)}<g fill="#0a111a"><rect x="425" y="90" width="14" height="8"/><rect x="445" y="90" width="14" height="8"/></g>${M(3,490,94)}<rect x="425" y="125" width="70" height="50" fill="none" stroke="#f4b860" stroke-dasharray="4"/>${M(1,460,150)}
+<rect x="430" y="255" width="90" height="22" rx="4" fill="#5ad1e6"/><path d="M445 255 L440 225 M505 255 L510 225" stroke="#5ad1e6" stroke-width="4"/>${M(4,475,266)}</svg>`;
+const AR='<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#f4b860"/></marker></defs>';
+const bx=(x,y,w,h,l)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="#16212e" stroke="#5ad1e6"/>`+l.map((t,i)=>`<text x="${x+w/2}" y="${y+22+i*18}" text-anchor="middle" font-size="${i?12:14}" fill="${i?"#dbe4ee":"#f4b860"}">${t}</text>`).join("");
+const FIG=`<svg class="d" viewBox="0 0 560 230" role="img" aria-label="Fig. 1: input, processing, storage and output">${AR}${bx(20,30,150,80,["INPUT","Data is collected","and entered"])}${bx(205,30,150,80,["PROCESSING","Data is","manipulated"])}${bx(390,30,150,80,["OUTPUT","Results are shown","on the monitor","or in print form"])}${bx(205,150,150,60,["STORAGE","Files and programs","are held on disk"])}
+<path d="M170 70 H203" stroke="#f4b860" stroke-width="2" marker-end="url(#ar)"/><path d="M355 70 H388" stroke="#f4b860" stroke-width="2" marker-end="url(#ar)"/><path d="M280 112 V148" stroke="#f4b860" stroke-width="2" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="95" y="135" text-anchor="middle" font-size="12" fill="#8a9bb0">mouse, keyboard</text></svg>`;
+const D={
+a:'<rect x="15" y="10" width="75" height="52" rx="3" fill="#2f4d73"/><rect x="20" y="15" width="65" height="42" fill="#7fe0f0"/><rect x="45" y="62" width="15" height="10" fill="#2f4d73"/><rect x="15" y="82" width="80" height="14" rx="2" fill="#c9d6e6"/><rect x="108" y="12" width="36" height="84" rx="3" fill="#3a5a80"/><rect x="114" y="22" width="24" height="4" fill="#0a111a"/>',
+b:'<rect x="35" y="10" width="90" height="62" rx="6" fill="#26364a" stroke="#8fb3d9" stroke-width="2"/><rect x="42" y="17" width="76" height="48" fill="#7fe0f0"/><rect x="25" y="76" width="110" height="10" rx="2" fill="#c9d6e6"/><path d="M142 16 L108 56" stroke="#f4b860" stroke-width="4" stroke-linecap="round"/>',
+c:'<rect x="35" y="12" width="90" height="60" rx="3" fill="#26364a" stroke="#8fb3d9" stroke-width="2"/><rect x="41" y="18" width="78" height="48" fill="#7fe0f0"/><path d="M18 76 H142 L152 94 H8 Z" fill="#c9d6e6"/>',
+d:'<g fill="#2f4d9d" stroke="#8fb3d9"><rect x="22" y="14" width="34" height="84" rx="3"/><rect x="63" y="14" width="34" height="84" rx="3"/><rect x="104" y="14" width="34" height="84" rx="3"/></g><g fill="#7fe0f0"><rect x="28" y="24" width="22" height="6"/><rect x="69" y="24" width="22" height="6"/><rect x="110" y="24" width="22" height="6"/><rect x="28" y="40" width="22" height="6"/><rect x="69" y="40" width="22" height="6"/><rect x="110" y="40" width="22" height="6"/></g>',
+e:'<rect x="55" y="8" width="50" height="86" rx="7" fill="#26364a" stroke="#8fb3d9" stroke-width="2"/><rect x="62" y="16" width="36" height="42" fill="#7fe0f0"/><circle cx="80" cy="78" r="6" fill="#8fb3d9"/><path d="M122 100 L92 64" stroke="#f4b860" stroke-width="4" stroke-linecap="round"/>'};
+const PICS=`<div class="pics">${["a","b","c","d","e"].map(k=>`<figure><svg viewBox="0 0 160 110" role="img" aria-label="Picture ${k}"><rect width="160" height="110" fill="#13263a"/>${D[k]}</svg><figcaption>${k}</figcaption></figure>`).join("")}</div>`;
+const T=(x,y,l)=>l.map((t,i)=>`<text x="${x}" y="${y+i*20}" font-size="13" fill="#dbe4ee">${t}</text>`).join("");
+const PERI=`<svg class="d" viewBox="0 0 560 250" role="img" aria-label="Diagram: peripherals are divided into input devices, output devices and storage media">
+<rect x="200" y="10" width="160" height="34" rx="6" fill="#16212e" stroke="#f4b860"/><text x="280" y="32" text-anchor="middle" font-size="15" fill="#f4b860">Peripherals</text>
+<path d="M280 44 V60 M100 60 H460 M100 60 V80 M280 60 V80 M460 60 V80" stroke="#5ad1e6" fill="none" stroke-width="2"/>
+<rect x="20" y="80" width="160" height="110" rx="6" fill="#16212e" stroke="#5ad1e6"/><text x="100" y="102" text-anchor="middle" font-size="14" fill="#5ad1e6">Input devices</text>${T(36,126,["• mouse","• keyboard","• camera"])}
+<rect x="200" y="80" width="160" height="110" rx="6" fill="#16212e" stroke="#5ad1e6"/><text x="280" y="102" text-anchor="middle" font-size="14" fill="#5ad1e6">Output devices</text>${T(216,126,["• monitor","• printer"])}
+<rect x="380" y="80" width="160" height="150" rx="6" fill="#16212e" stroke="#5ad1e6"/><text x="460" y="102" text-anchor="middle" font-size="14" fill="#5ad1e6">Storage media</text>${T(396,126,["• magnetic,","  e.g. hard drive","• optical, e.g. DVD","• flash memory,","  e.g. pen drive"])}</svg>`;
+/* ---------- builders ---------- */
+const say=(title,items)=>({k:"say",title,items});
+const sel=(title,opts,items,how)=>({k:"sel",title,opts,items,how});
+const gap=(title,items,bank,how)=>({k:"gap",title,items,bank,how});
+const open=(title,items,how)=>({k:"open",title,items,how});
+const raw=html=>({k:"raw",html});
+const KEY="Teacher: check with the audio";
+const INT=items=>({t:"Interview rapid-fire",m:5,s:["Speaking"],w:[say("20 seconds per answer, no preparation",items)]});
+const WRAP=(m,txt)=>({t:"Wrap-up and delayed error correction",m:m,s:["Speaking"],w:[say("Review the aim",[txt,"Teacher: read out two or three of Vadim’s sentences from today with small mistakes. He corrects them aloud."])]});
+const L={
+1:{t:"Lesson 1: Computer hardware",aim:"label the parts of a computer system, describe what each part does, and talk about your own devices and setup.",s:[
+{t:"Warm-up: discuss",m:6,s:["Speaking"],w:[say("Discuss",["Have you got a computer at home or at work? What kind is it?","How often do you use it? What do you use it for?","What are the main components and features of your computer system?","How many devices do you use in one working day (laptop, phone, tablet, smartwatch)?"])]},
+{t:"Label the parts of the computer system",m:10,s:["Vocabulary"],w:[
+raw(SYS),
+raw('<p><b>Number 1</b> is the <b>CPU</b> (it is inside the tower). Click a word to hear it.</p>'+bank(["CPU","DVD drive","USB ports","router","keyboard","mouse","discs","printer","monitor","webcam"])),
+gap("Type the English word for numbers 2 to 10",[["2 · the slot that reads discs: ",["DVD drive","optical drive","disc drive","cd drive","dvd/cd drive"]],["3 · small sockets for cables and flash drives: ",["USB ports","USB port","USB"]],["4 · the box with an aerial that connects you to the Internet: ",["router","modem","wireless router","wi-fi router"]],["5 · you type on it: ",["keyboard"]],["6 · you point and click with it: ",["mouse"]],["7 · CDs and DVDs: ",["discs","disks","DVDs","CDs","DVD","CD","disc","disk"]],["8 · it prints on paper: ",["printer"]],["9 · it shows the picture: ",["monitor","screen"]],["10 · the small camera for video calls: ",["webcam","web camera","camera"]]],null,"How to do it: look at the picture. Find the number. Read the clue. Type the English word. Use the word bank to help you.")]},
+{t:"Advertising slogans",m:10,s:["Reading","Speaking"],w:[
+sel("Which computer part does each pair of slogans describe?",["mouse","monitor","hard drive","CPU","printer"],[["1. “Point and click here for power” / “Obeys every impulse as if it were an extension of your hand”",0],["2. “Displays your ideas with perfect brilliance” / “See the difference: sharp images and a fantastic range of colours”",1],["3. “It’s quiet and fast” / “It’s easy to back up your data before it’s too late”",2],["4. “Power and speed on the inside” / “Let your computer’s brain do the work”",3],["5. “A big impact on the production of text and graphics” / “Just what you need: a laser powerhouse”",4]],"How to do it: read both slogans in each pair. Click the computer part they are about."),
+say("Your turn",["Write a one-line slogan for an SSD, a webcam and a docking station (see the next activities for the words).","Read your best slogan aloud. The teacher guesses the product."])]},
+{t:"Find words in the slogans",m:5,s:["Vocabulary"],w:[gap("Find the word",[["to press the mouse button: ",["click"]],["clear; easy to see: ",["sharp"]],["to make an extra copy of something: ",["back up"]],["selection: ",["range"]],["shows: ",["displays","display"]]],null,"How to do it: look back at the slogans above. Find the word with the same meaning. Type it.")]},
+{t:"Modern vocabulary: learn it, then use it",m:10,s:["Vocabulary","Speaking"],w:[
+raw("<p><b>Step 1.</b> Read the new words. Click 🔊 to hear the British pronunciation.</p>"+terms([["SSD","SSD (solid-state drive)","a fast storage drive with no moving parts.","My laptop has a 1 TB SSD."],["RAM","RAM","the memory that holds data while programs are running.","16 GB of RAM lets me run many apps."],["GPU","GPU (graphics card)","a processor for graphics, video and AI.","A GPU helps with video editing."],["USB-C","USB-C","a small modern connector for power, data and video.","I charge my phone with a USB-C cable."],["docking station","docking station","a box that connects a laptop to monitors, a keyboard and more.","I plug into the docking station at my desk."],["headset","headset","headphones with a microphone.","I wear a headset on video calls."],["touchscreen","touchscreen","a screen you control by touching it.","You can swipe on a touchscreen."],["cloud storage","cloud storage","storing files on servers on the Internet, not on your own computer.","I keep my files in cloud storage."]])),
+gap("Step 2. Choose the correct word",[["My laptop starts in seconds because it has an ",["SSD"],"."],["I plug my monitor, keyboard and charger into one ",["docking station"]," at my desk."],["For video editing and games, a good ",["GPU"]," is important."],["I keep my files in ",["cloud storage"]," so I can open them on any device."],["The new laptop has 16 GB of ",["RAM"],", so it can run many programs at once."],["With one ",["USB-C"]," cable I can charge my phone and connect a monitor."],["I wear a ",["headset"]," so my colleagues can hear me clearly on calls."],["You can tap and swipe on a ",["touchscreen"],"."]],["SSD","RAM","GPU","USB-C","docking station","headset","touchscreen","cloud storage"],"How to do it: read each sentence. Click the word that fits. Each word is used once."),
+say("Step 3. Speak",["Describe your own computer setup with at least four of the new words.","Which of the old parts (DVD drive, discs) do you still use?"])]},
+{t:"Freer speaking: choose a device for a colleague",m:12,s:["Speaking"],w:[say("Role-play (2 minutes each)",["A colleague starts as a QA tester and asks what to buy: a laptop or a desktop. Explain the specs you recommend (CPU, RAM, SSD, screen).","You work from home and your video calls look bad. Explain to IT support what the problem is and what you need (webcam, headset, router).","Explain to a non-technical manager why a developer needs a powerful computer."])]},
+INT(["What computer or devices do you use every day at work?","What are the main components of your work computer?","What would you upgrade first, and why?"]),
+WRAP(2,"Can you now label the parts of a computer and say what each part does? Say three sentences.")]},
+2:{t:"Lesson 2: What is a computer?",aim:"explain how a computer works (input, processing, storage, output) and define technical terms in your own words.",s:[
+{t:"Warm-up: explain it to a child",m:5,s:["Speaking"],w:[say("Speak for one minute",["How would you explain to a ten-year-old what a computer is? Do not use the words “computer” or “machine”.","Is a smartphone a computer? Why, or why not?"])]},
+{t:"Read the text, then explain the diagram",m:12,s:["Reading","Speaking"],w:[
+raw('<h4>Text: What is a computer?</h4><div class="txt"><p>A computer is an electronic machine that accepts data, processes it and gives the result in a useful form. First, data is entered into the computer’s memory. Then the program runs and the computer follows its instructions. Finally, we see the results, the output, on the screen or on paper.</p><p>A computer system has two parts: hardware and software. <b>Hardware</b> is any physical part that you can see or touch. <b>Software</b> is a set of instructions, called a program, which tells the computer what to do.</p><p>There are three basic hardware sections: the <b>central processing unit (CPU)</b>, <b>main memory</b> and <b>peripherals</b>. The CPU is the brain of the computer. It executes the program and coordinates the other parts. Main memory holds the instructions and the data while they are processed.</p><p>Peripherals are the devices attached to the computer. <b>Input devices</b>, such as the mouse and keyboard, put data into the computer. <b>Output devices</b>, such as the monitor and printer, show us the results. <b>Storage devices</b>, such as hard drives and flash drives, keep data and programs permanently. <b>Ports</b> on the computer let us plug in other peripherals, for example a camera or a scanner.</p></div>'),
+raw("<h4>Fig. 1</h4>"+FIG),
+say("Explain Fig. 1 in your own words",["Use: First, data is entered… Then it is processed… The results are shown on… Files and programs are kept on…","Teacher asks: Where does storage fit in the cycle? What is the difference between hardware and software?"]),
+say("Modern version",["Explain the same cycle for a food delivery app: input (you tap the order), processing (the server), storage (the database), output (the notification).","Now do it for something from your own work."])]},
+{t:"Match the words with the meanings",m:10,s:["Vocabulary"],w:[
+raw('<p class="note">Click 🔊 next to a word to hear it.</p><div class="ex"><ul style="list-style:none;padding:0"><li><b>a.</b> the brain of the computer</li><li><b>b.</b> physical parts that make up a computer system</li><li><b>c.</b> programs which can be used on a particular computer system</li><li><b>d.</b> the information which is presented to the computer</li><li><b>e.</b> results produced by a computer</li><li><b>f.</b> input devices attached to the CPU</li><li><b>g.</b> section that holds programs and data while they are executed or processed</li><li><b>h.</b> magnetic device used to store information</li><li><b>i.</b> sockets into which an external device may be connected</li></ul></div>'),
+sel("Match words 1 to 9 with the meanings a to i",["a","b","c","d","e","f","g","h","i"],[["1. software",2,"software"],["2. peripherals",5,"peripherals"],["3. main memory",6,"main memory"],["4. hard drive (also hard disk)",7,"hard drive"],["5. hardware",1,"hardware"],["6. input",3,"input"],["7. ports",8,"ports"],["8. output",4,"output"],["9. central processing unit (CPU)",0,"central processing unit"]],"How to do it: read the meanings above. For each word, click the letter of its meaning.")]},
+{t:"Modern terms and defining",m:10,s:["Vocabulary","Grammar"],w:[
+raw("<p>Click 🔊 to hear each word.</p>"+terms([["RAM","main memory = RAM","the memory that holds data while programs run.","Close some tabs to free RAM."],["SSD","hard drive or SSD","an SSD has no moving parts, so it is faster than a magnetic hard drive.","The SSD makes my laptop start quickly."],["USB-C","USB-C hub","one device that gives your laptop extra ports.","I use a USB-C hub for my monitor."],["cloud storage","cloud storage","storage on the Internet.","We share files in cloud storage."]])+'<h4 style="margin-top:10px">Rule: defining</h4><div class="ex"><p><code>X is a + noun + which/that + verb</code></p><ul><li>Software is a set of instructions <code>which</code> tells the computer what to do.</li><li>An SSD is a storage device <code>that</code> has no moving parts.</li></ul></div>'),
+gap("Complete the definitions",[["RAM is the part of the computer ",["that","which"]," holds data while programs run."],["A router is a device ",["that","which"]," connects your devices to the Internet."],["A GPU is a processor ",["that","which"]," handles graphics."]],null,"How to do it: type that or which."),
+say("Speak",["Define five terms from your own job in one sentence each, using that or which. The teacher guesses the term."])]},
+{t:"Writing: ticket comment (suggested)",m:5,s:["Writing"],w:[say("Suggested (can be homework)",["Write a short comment (4 to 5 sentences) for a support ticket: a colleague’s laptop is slow. Say what you checked (RAM, SSD, CPU load) and what you recommend."])]},
+INT(["Can you explain how a computer works in simple words?","What is the difference between hardware and software? Give an example from your job.","Where does your team store its data?"]),
+WRAP(3,"Can you explain input, processing, storage and output? Say them without looking at the diagram.")]},
+3:{t:"Lesson 3: Different types of computer",aim:"recognise and describe five types of computer, listen for key facts, and compare devices for different users.",s:[
+{t:"Warm-up and prediction",m:6,s:["Speaking","Listening"],w:[raw("<p>Look at pictures a to e.</p>"+PICS),say("Before listening (suggested)",["Name every type of computer you know. Which one do you use most?","Which of the five pictures shows old technology today? Which one do big companies still use?","Predict: what will the speaker say about mainframes, laptops and PDAs?"])]},
+{t:"Listening 3A: label the pictures",m:10,s:["Listening","Vocabulary"],w:[
+raw('<p class="note">Play the audio for this listening. (No audio is attached in this file.)</p>'+PICS+bank(["laptop","desktop PC","PDA","mainframe","tablet PC"])),
+gap("Listen and label the pictures with words from the box",[["Picture a: ",["desktop PC"]],["Picture b: ",["tablet PC"]],["Picture c: ",["laptop"]],["Picture d: ",["mainframe"]],["Picture e: ",["PDA"]]],["laptop","desktop PC","PDA","mainframe","tablet PC"],"How to do it: listen. Click the word that matches each picture.")]},
+{t:"Listening 3B: true or false?",m:10,s:["Listening"],w:[
+raw('<p class="note">Listen again. Say True or False, then correct the false sentences aloud. Answer key: not provided here, so check with the audio.</p>'),
+open("Listen again",[["1. A mainframe computer is less powerful than a PC.",KEY],["2. A mainframe is used by large organisations that need to process enormous amounts of data.",KEY],["3. The most suitable computers for home use are desktop PCs.",KEY],["4. A laptop is not portable.",KEY],["5. Laptops are not as powerful as desktop PCs.",KEY],["6. Using a stylus, you can write directly onto the screen of a tablet PC.",KEY],["7. A Personal Digital Assistant is small enough to fit into the palm of your hand.",KEY],["8. A PDA does not allow you to surf the Web.",KEY]])]},
+{t:"Post-listening: today’s equivalents and comparing",m:12,s:["Grammar","Speaking"],w:[
+raw('<div class="ex"><h4>Then and now</h4><ul><li>PDA → <code>smartphone</code> · tablet PC → <code>tablet with a stylus</code> · mainframe → <code>data centre / cloud server</code></li></ul><h4>Rule: comparing</h4><p><code>more powerful than</code> · <code>not as portable as</code> · <code>the most suitable for</code></p><ul><li>A laptop is more portable than a desktop PC.</li><li>A tablet is not as powerful as a workstation.</li></ul></div>'),
+gap("Complete",[["A smartphone is ",["more"]," portable than a laptop."],["A desktop PC is not as portable ",["as"]," a laptop."],["For gaming, a desktop is the ",["most"]," suitable computer."]],null,"How to do it: type one word."),
+say("Speak",["Which device is best for: a developer, a designer, a salesperson on the road, a bank’s data processing? Give reasons.","Does the cloud replace the old mainframe? Why, or why not?"])]},
+{t:"Freer speaking: IT consultant role-play",m:10,s:["Speaking"],w:[say("Role-play (3 minutes)",["Vadim is an IT consultant. A start-up with 10 employees asks which computers to buy (developers, one designer, one office manager). Recommend devices and explain why.","Teacher is the client and asks: What about security? What about the budget?"])]},
+INT(["Which types of computer have you worked with?","Do you prefer working on a laptop or a desktop? Why?","How has technology changed in your career?"]),
+WRAP(2,"Can you name five types of computer and compare two of them?")]},
+4:{t:"Lesson 4: Classifying and benefits",aim:"classify things into groups, describe a diagram, write a persuasive email about benefits, and answer interview questions about your IT skills.",s:[
+{t:"Warm-up: how would you group them?",m:5,s:["Speaking"],w:[say("Speak",["You have these items: mouse, SSD, monitor, webcam, USB stick, printer, keyboard, cloud drive. Group them into categories in 60 seconds. Explain your groups."])]},
+{t:"Classifying expressions",m:10,s:["Grammar","Vocabulary"],w:[
+raw('<div class="ex"><h4>Help box: classifying</h4><p>Classifying means putting things into groups.</p><ul><li><code>… are classified into X types/categories</code></li><li><code>… are classified by …</code></li><li><code>… can be divided into X types/categories</code></li><li><code>… include(s) …</code> · <code>… consist(s) of …</code></li><li><code>There are X types/classes of …</code> · <code>X is a type of …</code></li></ul><p><i>Digital computers can be divided into five main types. A tablet PC is a type of notebook computer.</i></p></div>'),
+gap("Complete the sentences",[["1. A computer ",["consists of","can be divided into"]," hardware and software."],["2. Peripherals ",["are classified into","can be divided into"]," three types: input, output and storage devices."],["3. A word processing program ",["is a type of"]," software which lets the user create and edit text."],["4. ",["There are two types"]," of network architecture: peer-to-peer, where all computers have the same capabilities, and client-server (e.g. the Internet), where servers store and distribute data, and clients access this data."]],["consists of","can be divided into","are classified into","is a type of","There are two types"],"How to do it: read each sentence. Click the expression from the help box that fits. Some expressions can fit more than one sentence, but choose the best one.")]},
+{t:"Describe the diagram",m:10,s:["Speaking"],w:[raw(PERI),say("In pairs, describe the diagram",["Use classifying expressions from the help box. Refer to your own devices.","Add two new items (touchscreen, microphone, SSD, cloud storage) and say which group each one belongs to."])]},
+{t:"Reading: cloud or local storage? (suggested)",m:8,s:["Reading"],w:[
+raw('<div class="txt"><p>Many teams now store files in the cloud instead of on a local hard drive. Cloud storage can be accessed from any device, and files are backed up automatically. However, it needs a stable Internet connection, and companies must think carefully about security. Local storage, such as an SSD or a USB stick, works offline and gives you full control, but a lost device can mean lost data. Most professionals use both: cloud storage for shared work and a local drive for large files.</p></div>'),
+open("Comprehension",[["Give two advantages of cloud storage.","It can be accessed from any device, and files are backed up automatically."],["What is a disadvantage of local storage?","A lost device can mean lost data."],["What do most professionals do?","They use both cloud and local storage."]])]},
+{t:"Writing: benefits email",m:8,s:["Writing"],w:[say("Choose one (in class or as homework)",["Your school is considering buying tablet PCs to use in the classroom. Write an email to your teacher explaining the benefits for the students and the school.","or: Your company is considering replacing all the office PCs with laptops. Write an email to your boss explaining the benefits for the employees and the company.","Use: Laptops are more portable than…, One of the main benefits is…, I would recommend… Aim for 8 to 10 sentences."])]},
+{t:"Mock job interview",m:14,s:["Speaking"],w:[say("Teacher is the interviewer. 30 to 40 seconds per answer",["Tell me about yourself and your role.","What hardware and software do you use every day?","Explain the difference between local and cloud storage.","How would you classify the tools you use at work?","Tell me about a time a computer or system failed. What did you do?","Which device would you recommend for a team of developers, and why?","How do you explain technical things to non-technical colleagues?","Why should we hire you?","Do you have any questions for us?"])]},
+WRAP(3,"Can you classify things and describe a diagram? What was the hardest interview question?")]}
+};
+/* ---------- engine ---------- */
+const app=document.getElementById("app");
+const choice=(opts,vals,ans)=>`<span class="ch" data-a="${ans}">${opts.map((o,j)=>`<button type="button" class="cb" data-o="${vals[j]}">${o}</button>`).join("")}</span>`;
+function wid(w){
+ if(w.k==="raw")return `<div class="w">${w.html}</div>`;
+ let h=`<div class="w"><h4>${w.title}</h4>`+(w.how?`<p class="note">${w.how}</p>`:"");
+ const btn=`<button class="b" data-do="chk">Run check</button><button class="b" data-do="key">Reveal answers</button> <span class="sc"></span>`;
+ if(w.k==="say")h+="<ul>"+w.items.map(i=>`<li>${i}</li>`).join("")+"</ul>";
+ if(w.k==="sel")h+=w.items.map(i=>`<div class="r"><span>${i[2]?spb(i[2]):""}${i[0]}</span>${choice(w.opts,w.opts.map((_,j)=>j),i[1])}</div>`).join("")+btn;
+ if(w.k==="gap")h+=w.items.map(i=>`<div class="r"><span>${i[0]}${w.bank?choice(w.bank,w.bank,i[1].join("|")):`<input class="g" data-a="${i[1].join("|")}" aria-label="gap" autocomplete="off">`} ${i[2]||""}</span></div>`).join("")+btn;
+ if(w.k==="open")h+=w.items.map(i=>`<div class="r"><span>${i[0]}<div class="ans">${i[1]}</div></span><button class="b sm" data-do="rev">Show answer</button></div>`).join("");
+ return h+"</div>";
+}
+function render(n){
+ const d=L[n];
+ app.innerHTML=`<h2>// ${d.t}</h2><div class="aim"><b>Aim:</b> By the end of the lesson you can ${d.aim}</div>`+d.s.map((s,i)=>`<details class="stage" ${i===0?"open":""}><summary><span>${s.s.map(x=>`<span class="sk">${x}</span>`).join("")}${s.t}</span><span class="min">${s.m} min</span></summary><div class="in">${s.w.map(wid).join("")}</div></details>`).join("");
+}
+const norm=s=>s.toLowerCase().replace(/[’']/g,"'").replace(/\s+/g," ").trim();
+app.addEventListener("click",e=>{
+ const s=e.target.closest("[data-s]");if(s){spk(s.dataset.s);return}
+ const c=e.target.closest(".cb");
+ if(c){const p=c.parentNode;p.dataset.v=c.dataset.o;p.querySelectorAll(".cb").forEach(x=>x.classList.toggle("on",x===c));p.classList.remove("ok","no");return}
+ const b=e.target.closest("button[data-do]");if(!b)return;
+ const a=b.dataset.do;
+ if(a==="rev"){b.closest(".r").classList.toggle("open");return}
+ const w=b.closest(".w"),f=[...w.querySelectorAll(".ch,input.g")];
+ let ok=0;
+ f.forEach(x=>{
+  const ans=x.dataset.a.split("|"),isC=x.classList.contains("ch");
+  if(a==="key"){if(isC){x.dataset.v=ans[0];x.querySelectorAll(".cb").forEach(y=>y.classList.toggle("on",y.dataset.o===ans[0]))}else x.value=ans[0]}
+  const v=isC?(x.dataset.v||""):x.value;
+  const right=ans.map(norm).includes(norm(v));
+  if(a==="key"||v!==""){x.classList.toggle("ok",right);x.classList.toggle("no",!right)}
+  if(right)ok++;
+ });
+ w.querySelector(".sc").textContent=ok+" / "+f.length;
+});
+const tabs=document.querySelectorAll(".tab");
+function go(n){tabs.forEach(x=>x.setAttribute("aria-selected",x.dataset.l===n));render(n)}
+tabs.forEach(t=>t.addEventListener("click",()=>{location.hash=t.dataset.l;go(t.dataset.l);window.scrollTo(0,0)}));
+const h0=["1","2","3","4"].includes(location.hash.slice(1))?location.hash.slice(1):"1";
+go(h0);
+</script>
+</body>
+</html>

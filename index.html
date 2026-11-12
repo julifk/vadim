@@ -47,8 +47,12 @@ const UNITS=[
 {t:"Unit 1: Living in a Digital Age",l:[
 {t:"Lesson 1",d:"The digital age, vocabulary and collocations, greetings and titles at work.",m:"60 min · speaking + listening",href:"formal-informal-lessons.html#1",hw:[{t:"Homework 1",d:"20 gap-fills · result sent to Julia",href:"homework-unit1-lesson1.html"},{t:"Homework 2",d:"30 gap-fills · result sent to Julia",href:"homework-unit1-lesson2.html"}]},
 {t:"Lesson 2",d:"Computers at work, experience in interviews, requests and instructions.",m:"60 min · speaking + listening",href:"formal-informal-lessons.html#2",hw:[{t:"Homework 2.1",d:"30 gap-fills · result sent to Julia",href:"homework-unit1-lesson2-1.html"}]}]},
-{t:"Unit 2",l:[{t:"Lesson 3",d:"Coming soon",m:"",href:null},{t:"Lesson 4",d:"Coming soon",m:"",href:null}]},
-{t:"Unit 3",l:[{t:"Lesson 5",d:"Coming soon",m:"",href:null},{t:"Lesson 6",d:"Coming soon",m:"",href:null}]}
+{t:"Unit 2: Computer essentials",l:[
+{t:"Lesson 3",d:"Computer hardware: parts of a computer system, modern vocabulary, advertising slogans.",m:"60 min · speaking + vocabulary",href:"unit2-computer-essentials-lessons.html#1"},
+{t:"Lesson 4",d:"What is a computer? Input, processing, storage and output, defining terms.",m:"60 min · speaking + reading",href:"unit2-computer-essentials-lessons.html#2"},
+{t:"Lesson 5",d:"Different types of computer: listening, comparing devices, consultant role-play.",m:"60 min · speaking + listening",href:"unit2-computer-essentials-lessons.html#3"},
+{t:"Lesson 6",d:"Classifying, describing a diagram, benefits email, mock job interview.",m:"60 min · speaking + writing",href:"unit2-computer-essentials-lessons.html#4"}]},
+{t:"Unit 3",l:[{t:"Lesson 7",d:"Coming soon",m:"",href:null},{t:"Lesson 8",d:"Coming soon",m:"",href:null}]}
 ];
 document.getElementById("units").innerHTML=UNITS.map(u=>`<h2>// ${u.t}</h2><div class="grid">${u.l.map(x=>{
  const i=`<h3>${x.t}</h3><p>${x.d}</p><small>${x.m||"not uploaded yet"}</small>`;
